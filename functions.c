@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 
 /************************* PRINT CHAR *************************/
 
@@ -41,7 +41,6 @@ int print_string(va_list types, char buffer[],
 	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
-
 	if (str == NULL)
 	{
 		str = "(null)";
@@ -95,7 +94,6 @@ int print_percent(va_list types, char buffer[],
 	UNUSED(width);
 	UNUSED(precision);
 	UNUSED(size);
-
 	return (write(1, "%%", 1));
 }
 
@@ -170,13 +168,11 @@ int print_binary(va_list types, char buffer[],
 	n = va_arg(types, unsigned int);
 	m = 2147483648; /* (2 ^ 31) */
 	a[0] = n / m;
-
 	for (i = 1; i < 32; i++)
 	{
 		m /= 2;
 		a[i] = (n / m) % 2;
 	}
-
 	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
 		sum += a[i];
@@ -188,7 +184,5 @@ int print_binary(va_list types, char buffer[],
 			count++;
 		}
 	}
-
 	return (count);
 }
-
